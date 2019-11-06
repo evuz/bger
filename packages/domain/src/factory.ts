@@ -3,7 +3,7 @@ import { DepInjection } from 'depsin';
 import { KyFetcher } from './Adapters/Fetcher/KyFetcher';
 import { ConfigSymbols } from './Config/ConfigSymbols';
 import { Config } from './Config/Config';
-import { Domain } from './Domain/domain'
+import { Domain } from './Domain/domain';
 
 export function createDomain({ config: conf }) {
   const config = new Config({

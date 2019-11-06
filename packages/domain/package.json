@@ -19,7 +19,8 @@
     "prepublishOnly": "npm test"
   },
   "dependencies": {
-    "depsin": "^1.2.4"
+    "depsin": "^1.2.4",
+    "firebase": "^7.2.3"
   },
   "devDependencies": {
     "@types/jest": "^24.0.18",
