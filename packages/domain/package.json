@@ -20,7 +20,8 @@
   },
   "dependencies": {
     "depsin": "^1.2.4",
-    "firebase": "^7.2.3"
+    "firebase": "^7.2.3",
+    "ky": "^0.15.0"
   },
   "devDependencies": {
     "@types/jest": "^24.0.18",

@@ -4,6 +4,7 @@ import { AuthProviderAdapter } from '../Adapters/AuthProvider/AuthProviderAdapte
 export interface IConfig {
   fetcher?: FetcherAdapter;
   authProvider?: AuthProviderAdapter;
+  serverUrl?: string;
 }
 
 export class Config {

@@ -1,5 +1,5 @@
-export interface LoginWithUsername {
-  username: string;
+export interface LoginWithMail {
+  email: string;
   password: string;
 }
 
@@ -8,6 +8,6 @@ export interface LoginWithProvider {
 }
 
 export interface LoginRepository {
-  loginWithUsername(user: LoginWithUsername);
+  loginWithMail(user: LoginWithMail);
   loginWithProvider(provider: LoginWithProvider);
 }

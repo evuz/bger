@@ -18,7 +18,7 @@ export class FirebaseAuthProvider implements AuthProviderAdapter {
   private firebase: firebase.app.App;
 
   constructor(firebaseConfig) {
-    firebase.initializeApp(firebaseConfig);
+    this.firebase = firebase.initializeApp(firebaseConfig);
   }
 
   login(p: string) {
