@@ -13,6 +13,8 @@
     "domain:test": "yarn workspace @bger/domain test",
     "domain:prettier": "yarn workspace @bger/domain prettier",
     "domain:lint": "yarn workspace @bger/domain lint",
+    "proxy:start": "yarn workspace @bger/proxy start",
+    "proxy:prettier": "yarn workspace @bger/proxy prettier",
     "prettier": "run-p domain:prettier",
     "lint": "run-p domain:lint"
   },
