@@ -8,6 +8,8 @@
     ]
   },
   "scripts": {
+    "app:serve": "yarn workspace @bger/webapp start",
+    "app:start": "run-s domain:build app:serve",
     "domain:build": "yarn workspace @bger/domain build",
     "domain:dev": "yarn workspace @bger/domain dev",
     "domain:test": "yarn workspace @bger/domain test",
