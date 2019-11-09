@@ -6,7 +6,6 @@ export * from './factory';
 export * from './Adapters/Fetcher/FetcherAdapter';
 export * from './Adapters/Fetcher/KyFetcher';
 export * from './Adapters/AuthProvider/AuthProviderAdapter';
-export * from './Adapters/AuthProvider/FirebaseAuthProvider';
 
 // Config
 export * from './Config/Config';
