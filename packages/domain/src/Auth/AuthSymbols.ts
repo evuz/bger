@@ -7,10 +7,10 @@ enum Services {
 }
 
 enum Repositories {
-  Login = 'LoginRepository',
+  Auth = 'AuthRepository',
 }
 
-export const UserSymbols = {
+export const AuthSymbols = {
   UseCases,
   Services,
   Repositories,

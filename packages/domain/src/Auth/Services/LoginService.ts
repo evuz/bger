@@ -1,11 +1,11 @@
 import { inject } from 'depsin';
 
 import { Service } from '../../Domain/models/Service';
-import { LoginWithProvider, LoginWithMail, LoginRepository } from '../Repositories/LoginRepository';
-import { UserSymbols } from '../UserSymbols';
+import { LoginWithProvider, LoginWithMail, AuthRepository } from '../Repositories/AuthRepository';
+import { AuthSymbols } from '../AuthSymbols';
 
 export class LoginService implements Service {
-  constructor(@inject(UserSymbols.Repositories.Login) private repository: LoginRepository) {}
+  constructor(@inject(AuthSymbols.Repositories.Auth) private repository: AuthRepository) {}
 
   execute(params: LoginWithProvider | LoginWithMail) {
     if ((<LoginWithProvider>params).provider) {

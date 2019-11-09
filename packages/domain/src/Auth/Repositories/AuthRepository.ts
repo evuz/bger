@@ -7,7 +7,7 @@ export interface LoginWithProvider {
   provider: 'google' | 'facebook';
 }
 
-export interface LoginRepository {
+export interface AuthRepository {
   loginWithMail(user: LoginWithMail);
   loginWithProvider(provider: LoginWithProvider);
 }

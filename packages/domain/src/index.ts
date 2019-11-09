@@ -12,4 +12,4 @@ export * from './Config/Config';
 export * from './Config/ConfigSymbols';
 
 // User
-export * from './User/UserSymbols';
+export * from './Auth/AuthSymbols';

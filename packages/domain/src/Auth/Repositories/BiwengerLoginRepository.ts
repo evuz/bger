@@ -1,10 +1,10 @@
 import { inject } from 'depsin';
 
-import { LoginRepository, LoginWithMail } from './LoginRepository';
+import { AuthRepository, LoginWithMail } from './AuthRepository';
 import { ConfigSymbols } from '../../Config/ConfigSymbols';
 import { Config } from '../../Config/Config';
 
-export class BiwengerLoginRepository implements LoginRepository {
+export class BiwengerLoginRepository implements AuthRepository {
   private get fetcher() {
     return this.config.get('fetcher');
   }

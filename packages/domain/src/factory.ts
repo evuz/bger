@@ -3,24 +3,24 @@ import { DepInjection } from 'depsin';
 import { ConfigSymbols } from './Config/ConfigSymbols';
 import { Config } from './Config/Config';
 import { Domain } from './Domain/domain';
-import { UserSymbols } from './User/UserSymbols';
-import { LoginUseCase } from './User/UseCases/LoginUseCase';
-import { LoginService } from './User/Services/LoginService';
-import { BiwengerLoginRepository } from './User/Repositories/BiwengerLoginRepository';
+import { AuthSymbols } from './Auth/AuthSymbols';
+import { LoginUseCase } from './Auth/UseCases/LoginUseCase';
+import { LoginService } from './Auth/Services/LoginService';
+import { BiwengerLoginRepository } from './Auth/Repositories/BiwengerLoginRepository';
 
 export function createDomain({ config }: { config: Config }) {
   const container = new DepInjection(
     {
-      [UserSymbols.UseCases.Login]: LoginUseCase,
-      [UserSymbols.Services.Login]: LoginService,
-      [UserSymbols.Repositories.Login]: BiwengerLoginRepository,
+      [AuthSymbols.UseCases.Login]: LoginUseCase,
+      [AuthSymbols.Services.Login]: LoginService,
+      [AuthSymbols.Repositories.Auth]: BiwengerLoginRepository,
     },
     { [ConfigSymbols.Config]: config },
   );
 
   return new Domain({
     useCases: {
-      [UserSymbols.UseCases.Login]: container.get<LoginUseCase>(UserSymbols.UseCases.Login),
+      [AuthSymbols.UseCases.Login]: container.get<LoginUseCase>(AuthSymbols.UseCases.Login),
     },
     config: <Config>container.get(ConfigSymbols.Config),
   });
