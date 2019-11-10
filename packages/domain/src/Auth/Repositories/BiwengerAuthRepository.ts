@@ -4,7 +4,7 @@ import { AuthRepository, LoginWithMail } from './AuthRepository';
 import { ConfigSymbols } from '../../Config/ConfigSymbols';
 import { Config } from '../../Config/Config';
 
-export class BiwengerLoginRepository implements AuthRepository {
+export class BiwengerAuthRepository implements AuthRepository {
   private get fetcher() {
     return this.config.get('fetcher');
   }
@@ -13,13 +13,19 @@ export class BiwengerLoginRepository implements AuthRepository {
     return this.config.get('serverUrl');
   }
 
+  private get storage() {
+    return this.config.get('storage');
+  }
+
   constructor(@inject(ConfigSymbols.Config) private config: Config) {}
 
   loginWithMail({ email, password }: LoginWithMail) {
-    return this.fetcher.post(`${this.serverUrl}/auth/login`, { password, email });
+    return this.fetcher.post(`${this.serverUrl}/auth/login`, { password, email }).then(res => {
+      return this.storage.set('token', res.token).then(() => res);
+    });
   }
 
-  loginWithProvider() {
+  loginWithProvider(): any {
     throw Error('BiwengerLoginRepository#loginWithProvider is not implemented');
   }
 }

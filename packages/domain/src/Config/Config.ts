@@ -1,9 +1,11 @@
 import { FetcherAdapter } from '../Adapters/Fetcher/FetcherAdapter';
 import { AuthProviderAdapter } from '../Adapters/AuthProvider/AuthProviderAdapter';
+import { StorageAdapter } from '../Adapters/Storage/StorageAdapter';
 
 export interface IConfig {
   fetcher?: FetcherAdapter;
   authProvider?: AuthProviderAdapter;
+  storage?: StorageAdapter;
   serverUrl?: string;
 }
 

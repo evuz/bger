@@ -8,6 +8,6 @@ export interface LoginWithProvider {
 }
 
 export interface AuthRepository {
-  loginWithMail(user: LoginWithMail);
-  loginWithProvider(provider: LoginWithProvider);
+  loginWithMail(user: LoginWithMail): Promise<any>;
+  loginWithProvider(provider: LoginWithProvider): Promise<any>;
 }

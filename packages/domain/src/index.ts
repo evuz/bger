@@ -6,6 +6,8 @@ export * from './factory';
 export * from './Adapters/Fetcher/FetcherAdapter';
 export * from './Adapters/Fetcher/KyFetcher';
 export * from './Adapters/AuthProvider/AuthProviderAdapter';
+export * from './Adapters/Storage/StorageAdapter';
+export * from './Adapters/Storage/LocalStorage';
 
 // Config
 export * from './Config/Config';

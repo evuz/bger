@@ -6,14 +6,14 @@ import { Domain } from './Domain/domain';
 import { AuthSymbols } from './Auth/AuthSymbols';
 import { LoginUseCase } from './Auth/UseCases/LoginUseCase';
 import { LoginService } from './Auth/Services/LoginService';
-import { BiwengerLoginRepository } from './Auth/Repositories/BiwengerLoginRepository';
+import { BiwengerAuthRepository } from './Auth/Repositories/BiwengerAuthRepository';
 
 export function createDomain({ config }: { config: Config }) {
   const container = new DepInjection(
     {
       [AuthSymbols.UseCases.Login]: LoginUseCase,
       [AuthSymbols.Services.Login]: LoginService,
-      [AuthSymbols.Repositories.Auth]: BiwengerLoginRepository,
+      [AuthSymbols.Repositories.Auth]: BiwengerAuthRepository,
     },
     { [ConfigSymbols.Config]: config },
   );
@@ -22,6 +22,6 @@ export function createDomain({ config }: { config: Config }) {
     useCases: {
       [AuthSymbols.UseCases.Login]: container.get<LoginUseCase>(AuthSymbols.UseCases.Login),
     },
-    config: <Config>container.get(ConfigSymbols.Config),
+    config: container.get<Config>(ConfigSymbols.Config),
   });
 }
