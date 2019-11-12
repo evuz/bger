@@ -11,11 +11,14 @@ export class LocalStorage implements StorageAdapter {
       return Promise.resolve(this.values[key]);
     }
 
-    let value = JSON.parse(this.window.localStorage.getItem(key));
-    if (value instanceof Object && value.type === TYPE) {
-      value = value.value;
-    }
-    this.values[key] = value;
+    let value: any = this.window.localStorage.getItem(key);
+    try {
+      value = JSON.parse(value);
+      if (value instanceof Object && value.type === TYPE) {
+        value = value.value;
+      }
+      this.values[key] = value;
+    } catch (error) {}
     return Promise.resolve(value);
   }
 

@@ -1,7 +1,7 @@
 import { Domain } from '../domain';
 
 describe('Domain', () => {
-  let domain: Domain<{ useCase: string }>;
+  let domain: Domain<{ useCase: string }, any>;
   beforeEach(() => {
     domain = new Domain({ useCases: { useCase: 'TestUseCase' }, config: { test: 'Config' } });
   });
@@ -22,18 +22,14 @@ describe('Domain', () => {
   });
 
   it('should return Config', () => {
-    expect(domain.getConfig({ key: 'test' })).toBe('Config');
+    expect(domain.getConfig()).toStrictEqual({ test: 'Config' });
   });
 
   it("should throw error if config doesn't exist", () => {
+    domain = new Domain({ useCases: { useCase: 'TestUseCase' } });
     function error() {
-      return domain.getConfig({ key: <any>'fail' });
+      return domain.getConfig();
     }
     expect(error).toThrowError();
-  });
-
-  it('should set new Config', () => {
-    domain.setConfig({ key: 'newConfig', config: 'test' });
-    expect(domain.getConfig({ key: 'newConfig' })).toBe('test');
   });
 });
