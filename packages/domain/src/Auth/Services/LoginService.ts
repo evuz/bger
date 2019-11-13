@@ -8,8 +8,8 @@ import { UserSymbols } from '../../User/UserSymbols';
 export class LoginService implements Service {
   constructor(
     @inject(AuthSymbols.Repositories.Auth) private repository: AuthRepository,
-    @inject(UserSymbols.Services.GetUser) private getUserService: Service
-    ) {}
+    @inject(UserSymbols.Services.GetUser) private getUserService: Service,
+  ) {}
 
   async execute(params: LoginWithProvider | LoginWithMail) {
     if ((<LoginWithProvider>params).provider) {

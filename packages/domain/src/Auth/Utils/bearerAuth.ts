@@ -1,5 +1,5 @@
 export function bearerAuth(token: string) {
-  if(!token) {
+  if (!token) {
     throw Error('BearerAuth need a token');
   }
 
