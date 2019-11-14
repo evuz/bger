@@ -1,9 +1,12 @@
-import { KyFetcher, Config, createDomain, LocalStorage } from '@bger/domain';
-
-const config = new Config({
-  fetcher: new KyFetcher(),
+import { KyFetcher, createDomain, LocalStorage } from '@bger/domain';
+console.log(process.env);
+const config = {
   serverUrl: process.env.REACT_APP_SERVER_URL,
-  storage: new LocalStorage(window),
-});
+};
 
-export default createDomain({ config });
+const adapters = {
+  fetcher: new KyFetcher(),
+  storage: new LocalStorage(window),
+}
+
+export default createDomain({ config, adapters });

@@ -1,14 +1,14 @@
 import { inject } from 'depsin';
 
 import { ConfigSymbols } from '../../Config/ConfigSymbols';
-import { Config } from '../../Config/Config';
+import { ConfigAdapters, ConfigValues } from '../../Config/ConfigTypes';
 import { UserRepository } from './UserRepository';
 import { bearerAuth } from '../../Auth/Utils/bearerAuth';
 import { User } from '../Entities/User';
 
 export class BiwengerUserRepository implements UserRepository {
   private get fetcher() {
-    return this.config.get('fetcher');
+    return this.adapters.get('fetcher');
   }
 
   private get serverUrl() {
@@ -16,10 +16,13 @@ export class BiwengerUserRepository implements UserRepository {
   }
 
   private get storage() {
-    return this.config.get('storage');
+    return this.adapters.get('storage');
   }
 
-  constructor(@inject(ConfigSymbols.Config) private config: Config) {}
+  constructor(
+    @inject(ConfigSymbols.Adapters) private adapters: ConfigAdapters,
+    @inject(ConfigSymbols.Config) private config: ConfigValues,
+  ) {}
 
   async getUser() {
     const token = await this.storage.get('token');

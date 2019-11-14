@@ -15,14 +15,14 @@ import { GetUserUseCase } from './User/UseCases/GetUserUseCase';
 import { GetUserService } from './User/Services/GetUserService';
 import { BiwengerUserRepository } from './User/Repositories/BiwengerUserRepository';
 
-import { leagueReducer } from './League/Reducers/reducer'
+import { leagueReducer } from './League/Reducers/reducer';
 import { Store } from './Adapters/Store/Store';
+import { IConfig, IAdapter, ConfigValues, ConfigAdapters } from './Config/ConfigTypes';
 
-export function createDomain({ config }: { config: Config }) {
-  if (!(config instanceof Config)) {
-    config = new Config(config);
-  }
-  config.set('store', new Store({ reducers: { league: leagueReducer } }))
+export function createDomain({ config: c, adapters: a }: { config: IConfig; adapters: IAdapter }) {
+  const config = new Config(c);
+  const adapters = new Config(a);
+  adapters.set('store', new Store({ reducers: { league: leagueReducer } }));
 
   const container = new DepInjection(
     {
@@ -33,7 +33,10 @@ export function createDomain({ config }: { config: Config }) {
       [UserSymbols.Services.GetUser]: GetUserService,
       [UserSymbols.Repositories.User]: BiwengerUserRepository,
     },
-    { [ConfigSymbols.Config]: config },
+    {
+      [ConfigSymbols.Config]: config,
+      [ConfigSymbols.Adapters]: adapters,
+    },
   );
 
   return new Domain({
@@ -41,6 +44,9 @@ export function createDomain({ config }: { config: Config }) {
       [AuthSymbols.UseCases.Login]: container.get<LoginUseCase>(AuthSymbols.UseCases.Login),
       [UserSymbols.UseCases.GetUser]: container.get<GetUserUseCase>(UserSymbols.UseCases.GetUser),
     },
-    config: container.get<Config>(ConfigSymbols.Config),
+    config: {
+      config: container.get<ConfigValues>(ConfigSymbols.Config),
+      adapters: container.get<ConfigAdapters>(ConfigSymbols.Adapters),
+    },
   });
 }
