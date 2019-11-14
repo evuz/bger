@@ -2,6 +2,7 @@ import { DepInjection } from 'depsin';
 
 import { Domain } from './Domain/domain';
 
+import { IConfig, IAdapter, ConfigValues, ConfigAdapters } from './Config/ConfigTypes';
 import { ConfigSymbols } from './Config/ConfigSymbols';
 import { Config } from './Config/Config';
 
@@ -15,14 +16,14 @@ import { GetUserUseCase } from './User/UseCases/GetUserUseCase';
 import { GetUserService } from './User/Services/GetUserService';
 import { BiwengerUserRepository } from './User/Repositories/BiwengerUserRepository';
 
-import { leagueReducer } from './League/Reducers/reducer';
 import { Store } from './Adapters/Store/Store';
-import { IConfig, IAdapter, ConfigValues, ConfigAdapters } from './Config/ConfigTypes';
+import { leagueReducer } from './League/Reducers/reducer';
+import { userReducer } from './User/Reducers/reducer';
 
 export function createDomain({ config: c, adapters: a }: { config: IConfig; adapters: IAdapter }) {
   const config = new Config(c);
   const adapters = new Config(a);
-  adapters.set('store', new Store({ reducers: { league: leagueReducer } }));
+  adapters.set('store', new Store({ reducers: { league: leagueReducer, user: userReducer } }));
 
   const container = new DepInjection(
     {
