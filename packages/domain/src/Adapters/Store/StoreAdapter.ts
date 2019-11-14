@@ -1,4 +1,9 @@
+export interface Action {
+  type: any;
+  payload: any;
+}
+
 export interface StoreAdapter {
-  dispatch(action): any;
+  dispatch(action: Action): any;
   getState(): any;
 }

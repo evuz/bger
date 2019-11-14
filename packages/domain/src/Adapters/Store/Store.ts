@@ -1,4 +1,4 @@
-import { StoreAdapter } from './StoreAdapter';
+import { StoreAdapter, Action } from './StoreAdapter';
 
 export class Store implements StoreAdapter {
   private keys: string[];
@@ -8,14 +8,14 @@ export class Store implements StoreAdapter {
   constructor({ reducers }: { reducers: { [key: string]: Function } }) {
     this.reducers = reducers;
     this.keys = Object.keys(reducers);
-    this.dispatch();
+    this.dispatch(null);
   }
 
-  public dispatch(action = {}) {
+  public dispatch(action: Action) {
     for (let index = 0; index < this.keys.length; index++) {
       const key = this.keys[index];
       const reducer = this.reducers[key];
-      this.state[key] = reducer(this.state[key], action);
+      this.state[key] = reducer(this.state[key], action || {});
     }
   }
 
