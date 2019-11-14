@@ -26,7 +26,7 @@ function localStorage() {
   };
 }
 
-describe('Domain', () => {
+describe('LocalStorage', () => {
   let localstorage: LocalStorage;
   beforeEach(() => {
     localstorage = new LocalStorage(<any>{ localStorage: localStorage() });

@@ -12,7 +12,7 @@ function reducer(name, initialState = null) {
   }
 }
 
-describe('Domain', () => {
+describe('Store', () => {
   let store: Store;
   beforeEach(() => {
     store = new Store({

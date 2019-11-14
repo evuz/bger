@@ -1,7 +1,7 @@
 import { Config } from '../Config';
 
 describe('Config', () => {
-  let config: Config;
+  let config: Config<any>;
 
   beforeEach(() => {
     config = new Config({
