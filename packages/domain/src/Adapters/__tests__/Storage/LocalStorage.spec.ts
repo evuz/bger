@@ -16,7 +16,7 @@ function localStorage() {
   }
 
   function remove(key) {
-    delete values[key]
+    delete values[key];
   }
 
   return {
@@ -59,7 +59,8 @@ describe('LocalStorage', () => {
   });
 
   it('should remove key', done => {
-    localstorage.remove('initial')
+    localstorage
+      .remove('initial')
       .then(() => localstorage.get('initial'))
       .then(val => {
         expect(val).toBeNull();

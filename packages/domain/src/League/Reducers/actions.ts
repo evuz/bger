@@ -1,3 +1,3 @@
 export enum LeagueActions {
-  Save = 'SaveLeagueAction'
+  Save = 'SaveLeagueAction',
 }

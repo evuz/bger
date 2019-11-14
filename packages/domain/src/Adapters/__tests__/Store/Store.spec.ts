@@ -1,15 +1,14 @@
 import { Store } from '../../Store/Store';
 
 function reducer(name, initialState = null) {
-
-  return function (state = initialState, { type, payload }) {
+  return function(state = initialState, { type, payload }) {
     switch (type) {
       case `save_${name}`:
         return payload;
       default:
         return state;
     }
-  }
+  };
 }
 
 describe('Store', () => {
@@ -19,7 +18,7 @@ describe('Store', () => {
       reducers: {
         league: reducer('league'),
         teams: reducer('teams', []),
-      }
+      },
     });
   });
 
@@ -34,7 +33,7 @@ describe('Store', () => {
   });
 
   it('should modify state after dispatch', () => {
-    store.dispatch({ type: 'save_league', payload: { id: '3', name: 'Premier' } })
+    store.dispatch({ type: 'save_league', payload: { id: '3', name: 'Premier' } });
     const { league, teams } = store.getState();
     expect(league).toStrictEqual({ id: '3', name: 'Premier' });
     expect(teams).toEqual([]);
