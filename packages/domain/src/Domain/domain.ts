@@ -1,19 +1,23 @@
-import { Args, GetUseCase } from './types/domain';
+import { Args, GetConfig, GetUseCase, SetConfig } from './types/domain';
 
-export class Domain<T, U> {
+export class Domain<T> {
   private useCases: T;
-  private config: U;
+  private config: { [e: string]: any };
 
-  constructor({ useCases, config }: Args<T, U>) {
+  constructor({ useCases, config = {} }: Args<T>) {
     this.useCases = useCases;
     this.config = config;
   }
 
-  getConfig(): U {
-    if (!this.config) {
-      throw Error(`Config doesn't exist`);
+  setConfig({ key, config }: SetConfig) {
+    this.config[key] = config;
+  }
+
+  getConfig({ key }: GetConfig) {
+    if (!this.config[key]) {
+      throw Error(`Config ${key} doesn't exist`);
     }
-    return this.config;
+    return this.config[key];
   }
 
   get<K extends keyof T>({ useCase }: GetUseCase<T, K>): T[K] {
