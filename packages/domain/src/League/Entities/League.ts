@@ -7,7 +7,7 @@ export class League extends Entity<ILeague> {
   type: string;
   mode: string;
   created: number;
-  scoreID: number;
+  scoreId: number;
   icon: string;
   competition: string;
 }
