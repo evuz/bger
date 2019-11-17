@@ -15,22 +15,21 @@ input:-webkit-autofill {
   position: relative;
 
   label {
-    color: $color-positive-light;
-    font-size: $font-size-xs;
+    font-size: $font-size;
     line-height: 16px;
     pointer-events: none;
     position: absolute;
     top: $spacing * 2;
-    right: 0;
     left: 0;
-    transition: all $fastest ease;
+    transition: top $fastest ease, transform $fastest ease;
+    transform-origin: left;
   }
 
   input {
     background-color: transparent;
     padding: $spacing * 2 0 $spacing;
     width: 100%;
-    font-size: $font-size-s;
+    font-size: $font-size;
     line-height: 16px;
     color: map-get($colors, dark);
   }
@@ -38,13 +37,15 @@ input:-webkit-autofill {
   &__formField {
     position: relative;
     display: flex;
+    color: $color-positive-light;
     border-bottom: solid 1px $color-positive-lighter;
     transition: all $fastest ease;
 
     &--active {
       label {
         top: 0;
-        transform: scaleY(0.8);
+        transform: scale(0.75);
+        color: map-get($colors, primary);
       }
     }
 
@@ -55,6 +56,7 @@ input:-webkit-autofill {
 
     &--error {
       animation: shake $fast;
+      animation-delay: $fastest;
       color: map-get($colors, error);
       border-color: map-get($colors, error);
     }
@@ -69,12 +71,12 @@ input:-webkit-autofill {
   }
 
   &__error {
-    height: $font-size-xxs * 2;
+    height: $font-size-xs * 2;
     width: 100%;
     position: absolute;
-    bottom: -$font-size-xxs * 2;
+    bottom: -$font-size-xs * 2;
     color: map-get($colors, error);
-    font-size: $font-size-xxs;
+    font-size: $font-size-xs;
     line-height: 2;
   }
 }

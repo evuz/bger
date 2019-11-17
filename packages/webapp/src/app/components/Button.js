@@ -7,12 +7,13 @@ function Button({ children, type, full, disabled, color, onClick }) {
   const classnames = {
     Button: true,
     [colorClass]: true,
-    'Button-full': full,
+    'Button--full': full,
   };
 
   return (
     <button className={filterClassnames(classnames)} type={type} disabled={disabled} onClick={onClick}>
       {children}
+      {disabled ? <div className="Button__overlay"></div> : null}
     </button>
   );
 }
