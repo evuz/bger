@@ -13,6 +13,7 @@ input:-webkit-autofill {
 
   flex: 1 1 100%;
   position: relative;
+  display: flex;
 
   label {
     font-size: $font-size;
@@ -34,6 +35,11 @@ input:-webkit-autofill {
     color: map-get($colors, dark);
   }
 
+  &__btn-password {
+    width: $spacing * 4;
+    @include icon_properties($spacing * 2, $color-positive-lighter);
+  }
+
   &__formField {
     position: relative;
     display: flex;
@@ -52,6 +58,9 @@ input:-webkit-autofill {
     &--focus,
     &:focus {
       border-color: map-get($colors, primary);
+      .Input__btn-password {
+        @include icon_properties(null, map-get($colors, primary));
+      }
     }
 
     &--error {

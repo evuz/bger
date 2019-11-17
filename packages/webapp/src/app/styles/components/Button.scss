@@ -1,18 +1,4 @@
-@mixin button-reset {
-  padding: 0;
-  border: none;
-  font: inherit;
-  color: inherit;
-  background-color: transparent;
-  cursor: pointer;
-
-  &:focus {
-    outline: none;
-  }
-}
-
 .Button {
-  @include button-reset;
   padding: $spacing-s * 3 $spacing-s * 5;
   border-radius: 3px;
   font-weight: 500;

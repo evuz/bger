@@ -1,0 +1,12 @@
+@mixin icon_properties($size, $color) {
+  svg {
+    @if $size {
+      width: $size;
+    }
+    @if $color {
+      path {
+        fill: $color;
+      }
+    }
+  }
+}

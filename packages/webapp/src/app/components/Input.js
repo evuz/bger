@@ -1,33 +1,38 @@
 import React, { useState } from 'react';
+import Icon from '@mdi/react';
+import { mdiEye, mdiEyeOff } from '@mdi/js';
 import PropTypes from 'prop-types';
 
 import useInputTouch from '../hooks/useInputTouch';
 import filterClassnames from '../utils/filterClassNames';
 
-function Input({
-  name,
-  label,
-  placeholder,
-  value,
-  onChange,
-  disabled,
-  type,
-  validation,
-}) {
+function Input({ name, label, placeholder, value, onChange, disabled, type: t, validation }) {
+  const [type, setType] = useState(t);
   const [focus, setFocus] = useState(false);
   const isTouch = useInputTouch(value);
   const showError = !focus && isTouch && !validation.isValid;
+  const showPasswordIcon = t === 'password';
   const containerClass = {
-    'Input__formField': true,
+    Input__formField: true,
     'Input__formField--focus': focus,
     'Input__formField--disabled': disabled,
     'Input__formField--error': showError,
     'Input__formField--active': !!value | focus,
   };
+  let passwordIcon = null;
   let error;
   if (showError) {
     const errorKey = Object.keys(validation.errors)[0];
     error = validation.errors[errorKey];
+  }
+  if (showPasswordIcon) {
+    const icon = type === 'password' ? mdiEyeOff : mdiEye;
+    const toggle = () => setType(type === 'password' ? 'text' : 'password');
+    passwordIcon = (
+      <button className="Input__btn-password" type="button" onClick={toggle}>
+        <Icon path={icon}></Icon>
+      </button>
+    );
   }
 
   return (
@@ -43,6 +48,7 @@ function Input({
           onFocus={() => setFocus(true)}
           onBlur={() => setFocus(false)}
         />
+        {passwordIcon}
         <label htmlFor={name}>{label}</label>
       </div>
       <span className="Input__error">{error}</span>
