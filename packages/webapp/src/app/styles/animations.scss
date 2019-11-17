@@ -1,0 +1,27 @@
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shake {
+  from,
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+
+  40%,
+  80% {
+    transform: translate3d(-$spacing-s, 0, 0);
+  }
+
+  20%,
+  60% {
+    transform: translate3d($spacing-s, 0, 0);
+  }
+}

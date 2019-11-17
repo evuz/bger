@@ -1,0 +1,63 @@
+@mixin button-reset {
+  padding: 0;
+  border: none;
+  font: inherit;
+  color: inherit;
+  background-color: transparent;
+  cursor: pointer;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.Button {
+  @include button-reset;
+  padding: $spacing-s * 3 $spacing-s * 5;
+  border-radius: 5px;
+  font-weight: 500;
+  color: map-get($colors, light);
+  position: relative;
+  transition: box-shadow $fastest;
+  box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+
+  &--dark {
+    background-color: map-get($colors, dark);
+  }
+
+  &--black {
+    background-color: map-get($colors, black);
+  }
+
+  &--light {
+    background-color: map-get($colors, light);
+    color: map-get($colors, black);
+  }
+
+  &--primary {
+    background-color: map-get($colors, primary);
+  }
+
+  &--accent {
+    background-color: map-get($colors, accent);
+  }
+
+  &--highlight {
+    background-color: map-get($colors, highlight);
+  }
+
+  @media (hover: hover) {
+    &:hover{
+      box-shadow: 0 2px 5px 1px rgba(0,0,0,.2), 0 3px 10px 1px rgba(0,0,0,.14), 0 1px 14px 2px rgba(0,0,0,.12);
+    }
+  }
+
+  &:active {
+    box-shadow: none;
+  }
+
+  &-full {
+    display: block;
+    width: 100%;
+  }
+}

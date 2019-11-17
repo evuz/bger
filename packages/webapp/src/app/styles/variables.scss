@@ -1,0 +1,31 @@
+// Colors
+$colors: (
+  dark: #34355b,
+  black: #252644,
+  light: #f5f7fa,
+  primary: #00d495,
+  accent: #ff316d,
+  highlight: #ffbe00,
+  error: #fc5959,
+);
+
+// Spacing
+$spacing-m: 8px;
+$spacing-s: 4px;
+$spacing: $spacing-m;
+
+// Transition speed
+$slow: 2s;
+$fast: 1s;
+$faster: 0.5s;
+$fastest: 0.3s;
+
+// -- Sizes
+$font-size-xxl: 36px;
+$font-size-xl: 32px;
+$font-size-l: 20px;
+$font-size-m: 14px;
+$font-size-s: 12px;
+$font-size-xs: 11px;
+$font-size-xxs: 8px;
+$font-size: $font-size-m;

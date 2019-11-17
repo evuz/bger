@@ -1,0 +1,80 @@
+// removing annoying yellow background
+input {
+  border: 0;
+}
+
+input:-webkit-autofill {
+  box-shadow: 0 0 0 30px white inset;
+}
+
+.Input {
+  $color-positive-lighter: rgba(map-get($colors, dark), 0.4);
+  $color-positive-light: rgba(map-get($colors, dark), 0.6);
+
+  flex: 1 1 100%;
+  position: relative;
+
+  label {
+    color: $color-positive-light;
+    font-size: $font-size-xs;
+    line-height: 16px;
+    pointer-events: none;
+    position: absolute;
+    top: $spacing * 2;
+    right: 0;
+    left: 0;
+    transition: all $fastest ease;
+  }
+
+  input {
+    background-color: transparent;
+    padding: $spacing * 2 0 $spacing;
+    width: 100%;
+    font-size: $font-size-s;
+    line-height: 16px;
+    color: map-get($colors, dark);
+  }
+
+  &__formField {
+    position: relative;
+    display: flex;
+    border-bottom: solid 1px $color-positive-lighter;
+    transition: all $fastest ease;
+
+    &--active {
+      label {
+        top: 0;
+        transform: scaleY(0.8);
+      }
+    }
+
+    &--focus,
+    &:focus {
+      border-color: map-get($colors, primary);
+    }
+
+    &--error {
+      animation: shake $fast;
+      color: map-get($colors, error);
+      border-color: map-get($colors, error);
+    }
+
+    &--disabled {
+      border-bottom: dotted 1px $color-positive-lighter;
+      input {
+        color: $color-positive-lighter;
+        cursor: not-allowed;
+      }
+    }
+  }
+
+  &__error {
+    height: $font-size-xxs * 2;
+    width: 100%;
+    position: absolute;
+    bottom: -$font-size-xxs * 2;
+    color: map-get($colors, error);
+    font-size: $font-size-xxs;
+    line-height: 2;
+  }
+}
