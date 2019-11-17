@@ -1,20 +1,26 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Link, useHistory } from 'react-router-dom';
 
 import useInput from '../hooks/useInput';
 import useDomain from '../hooks/useDomain';
+import Validators from '../utils/validators';
 
 import Button from '../components/Button';
 import Input from '../components/Input';
 import { AuthSymbols } from '@bger/domain';
 
 function Login() {
-  const { validation, ...email } = useInput('');
-  const password = useInput('');
+  const history = useHistory();
+  const email = useInput('', [Validators.required]);
+  const password = useInput('', [Validators.required]);
+  const validForm = ![email.validation.isValid, password.validation.isValid].includes(false);
+  const [user, execlogin] = useDomain(AuthSymbols.UseCases.Login, null);
 
-  const [, execlogin] = useDomain(AuthSymbols.UseCases.Login, null, loginResponse => {
-    console.log('USER', loginResponse);
-  });
+  useEffect(() => {
+    if (user.data) {
+      history.push('/select-league');
+    }
+  }, [user, history]);
 
   function login(e) {
     e.preventDefault();
@@ -33,13 +39,15 @@ function Login() {
           <Input label="E-mail" name="email" {...email} />
           <Input label="Password" name="password" type="password" {...password} />
           <div className="Login__btn">
-            <Button type="submit" color="dark" full>
+            <Button disabled={!validForm} type="submit" color="dark" full>
               Login
             </Button>
           </div>
           <div className="Login__social-login">
             <p className="Login__secondary-text">Do you have a social account?</p>
-            <Link to="/sign-in" className="Login__social-btn">Sign in</Link>
+            <Link to="/sign-in" className="Login__social-btn">
+              Sign in
+            </Link>
           </div>
         </div>
       </form>
