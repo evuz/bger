@@ -5,8 +5,10 @@
 @import "./app";
 
 // Components
+@import "./components/Page";
 @import "./components/Button";
 @import "./components/Input";
 
 // Pages
 @import "./pages/Login";
+@import "./pages/NotFound";

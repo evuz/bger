@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import useInput from '../hooks/useInput';
 import useDomain from '../hooks/useDomain';
@@ -21,7 +22,7 @@ function Login() {
   }
 
   return (
-    <div className="Login">
+    <div className="Page Login">
       <h1 className="Login__title">Sign in</h1>
       <form onSubmit={login} className="Login__form">
         <div className="Login__content">
@@ -38,7 +39,7 @@ function Login() {
           </div>
           <div className="Login__social-login">
             <p className="Login__secondary-text">Do you have a social account?</p>
-            <span className="Login__social-btn">Sign in</span>
+            <Link to="/sign-in" className="Login__social-btn">Sign in</Link>
           </div>
         </div>
       </form>
