@@ -8,7 +8,7 @@ export class Store implements StoreAdapter {
   private keys: string[];
   private reducers: { [key: string]: Function };
   private state: { [key: string]: any } = {};
-  private listeners: Array<(state) => void>;
+  private listeners: Array<(state) => void> = [];
 
   constructor({ reducers }: { reducers: { [key: string]: Function } }) {
     this.reducers = reducers;
