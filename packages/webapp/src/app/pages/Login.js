@@ -33,8 +33,8 @@ function Login() {
       <form onSubmit={login} className="Login__form">
         <div className="Login__content">
           <div className="Login__welcome">
-            <h3>Hello</h3>
-            <h6 className="Login__secondary-text">Enter your credentials to continue</h6>
+            <h2>Hello</h2>
+            <h4 className="Login__secondary-text">Enter your credentials to continue</h4>
           </div>
           <Input label="E-mail" name="email" {...email} />
           <Input label="Password" name="password" type="password" {...password} />
