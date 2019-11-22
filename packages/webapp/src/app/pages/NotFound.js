@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import Button from '../components/Button';
 
-function NotFound() {
+function NotFoundPage() {
   return (
     <div className="Page NotFound">
       <h1 className="NotFound__code">404</h1>
@@ -15,4 +15,4 @@ function NotFound() {
   );
 }
 
-export default NotFound;
+export default NotFoundPage;

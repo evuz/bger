@@ -9,7 +9,7 @@ import Button from '../components/Button';
 import Input from '../components/Input';
 import { AuthSymbols } from '@bger/domain';
 
-function Login() {
+function LoginPage() {
   const history = useHistory();
   const email = useInput('', [Validators.required]);
   const password = useInput('', [Validators.required]);
@@ -55,4 +55,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default LoginPage;
