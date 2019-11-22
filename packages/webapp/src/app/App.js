@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { UserSymbols } from '@bger/domain';
 
 import useDomain from './hooks/useDomain';
 
-import Login from './pages/Login';
-import NotFound from './pages/NotFound';
+import Routes from './router/Routes';
 import Loading from './pages/Loading';
-import { UserSymbols } from '@bger/domain';
 
 function App() {
   const [isAppInit, initApp] = useState(false);
@@ -29,18 +27,7 @@ function App() {
     return <Loading />;
   }
 
-  return (
-    <Router>
-      <Switch>
-        <Route exact path="/">
-          <Login />
-        </Route>
-        <Route path="*">
-          <NotFound />
-        </Route>
-      </Switch>
-    </Router>
-  );
+  return <Routes />;
 }
 
 export default App;
