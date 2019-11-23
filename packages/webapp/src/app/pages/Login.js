@@ -18,7 +18,7 @@ function LoginPage() {
 
   useEffect(() => {
     if (user.data) {
-      history.push('/select-league');
+      history.push('/');
     }
   }, [user, history]);
 

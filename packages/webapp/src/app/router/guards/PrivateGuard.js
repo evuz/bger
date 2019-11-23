@@ -4,7 +4,7 @@ import { Route, Redirect } from 'react-router-dom';
 import useStore from '../../hooks/useStore';
 
 function PrivateGuard({ children, ...rest }) {
-  const user = useStore('user');
+  const user = useStore('user', false);
   return <Route {...rest} render={() => (user ? children : <Redirect to="/login" />)} />;
 }
 
