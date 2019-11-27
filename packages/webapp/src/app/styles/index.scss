@@ -1,5 +1,6 @@
 // Utils
 @import "./mixins";
+@import "./functions";
 @import "./reset";
 @import "./variables";
 @import "./animations";
@@ -9,8 +10,12 @@
 @import "./components/Page";
 @import "./components/Button";
 @import "./components/Input";
+@import "./components/Card";
+@import "./components/LeagueItem";
+@import "./components/Avatar";
 
 // Pages
+@import "./pages/Leagues";
 @import "./pages/Login";
 @import "./pages/Loading";
 @import "./pages/NotFound";

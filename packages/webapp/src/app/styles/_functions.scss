@@ -1,0 +1,8 @@
+@function text-color($color, $colors) {
+  @if (lightness($color ) > 60) {
+    @return map-get($colors, black);
+  }
+  @else {
+    @return map-get($colors, light);
+  }
+}

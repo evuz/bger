@@ -2,141 +2,50 @@
   padding: $spacing-s * 3 $spacing-s * 5;
   border-radius: 3px;
   font-weight: 500;
-  color: map-get($colors, light);
-  position: relative;
-  transition: $fastest;
 
-  &__overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    opacity: .3;
-    background-color: black;
+  &--shadow {
+    box-shadow: $shadow;
   }
 
-  &--dark {
-    $button-color: map-get($colors, dark);
-    background-color: $button-color;
-    box-shadow: 0px 3px 0px 0px lighten($button-color, 10%);
-  }
+  &--simple#{&} {
+    @each $name, $color in $colors {
+      &--#{$name} {
+        background-color: $color;
+        color: text-color($color, $colors);
 
-  &--black {
-    $button-color: map-get($colors, black);
-    background-color: $button-color;
-    box-shadow: 0px 3px 0px 0px lighten($button-color, 10%);
-  }
-
-  &--light {
-    $button-color: map-get($colors, light);
-    background-color: $button-color;
-    color: map-get($colors, black);
-    box-shadow: 0px 3px 0px 0px darken($button-color, 10%);
-  }
-
-  &--primary {
-    $button-color: map-get($colors, primary);
-    background-color: $button-color;
-    box-shadow: 0px 3px 0px 0px darken($button-color, 10%);
-  }
-
-  &--accent {
-    $button-color: map-get($colors, accent);
-    background-color: $button-color;
-    box-shadow: 0px 3px 0px 0px darken($button-color, 10%);
-  }
-
-  &--highlight {
-    $button-color: map-get($colors, highlight);
-    background-color: $button-color;
-    box-shadow: 0px 3px 0px 0px darken($button-color, 10%);
-  }
-
-  @media (hover: hover) {
-    &--dark:hover {
-      $button-color: lighten(map-get($colors, dark), 10%);
-      background-color: $button-color;
-      box-shadow: 0px 3px 0px 0px lighten($button-color, 10%);
-    }
-
-    &--black:hover {
-      $button-color: lighten(map-get($colors, black), 10%);
-      background-color: $button-color;
-      box-shadow: 0px 3px 0px 0px lighten($button-color, 10%);
-    }
-
-    &--light:hover {
-      $button-color: darken(map-get($colors, light), 10%);
-      background-color: $button-color;
-      color: map-get($colors, black);
-      box-shadow: 0px 3px 0px 0px darken($button-color, 10%);
-    }
-
-    &--primary:hover {
-      $button-color: lighten(map-get($colors, primary), 10%);
-      background-color: $button-color;
-      box-shadow: 0px 3px 0px 0px darken($button-color, 10%);
-    }
-
-    &--accent:hover {
-      $button-color: lighten(map-get($colors, accent), 10%);
-      background-color: $button-color;
-      box-shadow: 0px 3px 0px 0px darken($button-color, 10%);
-    }
-
-    &--highlight:hover {
-      $button-color: lighten(map-get($colors, highlight), 10%);
-      background-color: $button-color;
-      box-shadow: 0px 3px 0px 0px darken($button-color, 10%);
+        &:hover {
+          background-color: darken($color, 2.5%);
+        }
+        &:active {
+          background-color: darken($color, 5%);
+        }
+      }
     }
   }
 
-  &:active {
-    transform: translateY(2px);
-  }
+  &--outline#{&} {
+    background-color: transparent;
+    @each $name, $color in $colors {
+      &--#{$name} {
+        border: 1px solid $color;
+        color: $color;
 
-  &--dark:active {
-    $button-color: darken(map-get($colors, dark), 10%);
-    background-color: $button-color;
-    box-shadow: 0px 1px 0px 0px lighten($button-color, 10%);
-  }
-
-  &--black:active {
-    $button-color: darken(map-get($colors, black), 10%);
-    background-color: $button-color;
-    box-shadow: 0px 1px 0px 0px lighten($button-color, 10%);
-  }
-
-  &--light:active {
-    $button-color: darken(map-get($colors, light), 20%);
-    background-color: $button-color;
-    color: map-get($colors, black);
-    box-shadow: 0px 1px 0px 0px darken($button-color, 10%);
-  }
-
-  &--primary:active {
-    $button-color: darken(map-get($colors, primary), 10%);
-    background-color: $button-color;
-    box-shadow: 0px 1px 0px 0px darken($button-color, 10%);
-  }
-
-  &--accent:active {
-    $button-color: darken(map-get($colors, accent), 10%);
-    background-color: $button-color;
-    box-shadow: 0px 1px 0px 0px darken($button-color, 10%);
-  }
-
-  &--highlight:active {
-    $button-color: darken(map-get($colors, highlight), 10%);
-    background-color: $button-color;
-    box-shadow: 0px 1px 0px 0px darken($button-color, 10%);
+        &:hover {
+          background-color: $color;
+          color: map-get($colors, light);
+        }
+        &:active {
+          background-color: darken($color, 2.5%);
+          color: map-get($colors, light);
+        }
+      }
+    }
   }
 
   &:disabled {
-    box-shadow: none;
-    transform: translateY(3px);
+    opacity: .5;
     pointer-events: none;
+    box-shadow: none;
   }
 
   &--full {
