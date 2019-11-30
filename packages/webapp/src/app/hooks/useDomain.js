@@ -1,8 +1,8 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 
 import domain from '../domain';
 
-function useDomain(useCase) {
+function useDomain(useCase, autoExecute = false) {
   const [response, setResponse] = useState({
     data: null,
     loading: false,
@@ -21,6 +21,12 @@ function useDomain(useCase) {
         setResponse({ error, data: null, loading: false });
       });
   }, [useCase])
+
+  useEffect(() => {
+    if(autoExecute) {
+      exec();
+    }
+  }, [autoExecute, exec]);
 
   return [response, exec];
 }

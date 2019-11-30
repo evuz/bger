@@ -1,0 +1,7 @@
+.Leagues {
+  padding: $spacing;
+
+  &__list > * {
+    margin-bottom: $spacing * 2;
+  }
+}
