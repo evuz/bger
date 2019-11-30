@@ -24,7 +24,9 @@ function LoginPage() {
 
   function login(e) {
     e.preventDefault();
-    execlogin({ email: email.value, password: password.value });
+    if (validForm) {
+      execlogin({ email: email.value, password: password.value });
+    }
   }
 
   return (
@@ -39,7 +41,7 @@ function LoginPage() {
           <Input label="E-mail" name="email" {...email} />
           <Input label="Password" name="password" type="password" {...password} />
           <div className="Login__btn">
-            <Button disabled={!validForm} type="submit" color="dark" full>
+            <Button disabled={!validForm} type="submit" color="dark" full shadow>
               Login
             </Button>
           </div>

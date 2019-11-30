@@ -3,7 +3,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: map-get($colors, black);
+  background-color: map-get($colors, dark);
   color: map-get($colors, light);
   padding: $spacing * 5;
 
