@@ -1,0 +1,27 @@
+.LeagueItem {
+  display: flex;
+  color: map-get($colors, light);
+  &__avatar {
+    width: $spacing * 5;
+    height: $spacing * 5;
+    border-radius: 50px;
+    background-color: map-get($colors, primary);
+  }
+
+  &__info {
+    margin-left: $spacing * 2;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+
+  &__name {
+    font-weight: 500;
+  }
+
+  &__competition {
+    font-size: $font-size-s;
+    opacity: .8;
+  }
+}
